@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>closures</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+    //IIFE (Immediately Invoked Function EXpression)
+
+    //Se cambia el Scope de la función para que la variable
+    //color no tenga Scope global sino sea privada.
+    (function() {
+        let color = 'green';
+
+        function printColor() {
+            console.log(color);
+        }
+
+        printColor();
+    })();
+
+    //Función que regresa funciones
+    function makeColorPrinter(color) {
+        let colorMessage = `The color is ${color}`;
+
+        return function() {
+            console.log(colorMessage);
+        }
+    }
+
+    let greenColorPrinter = makeColorPrinter('GREEN');
+
+    greenColorPrinter();
+    </script>
+</body>
+</html>
