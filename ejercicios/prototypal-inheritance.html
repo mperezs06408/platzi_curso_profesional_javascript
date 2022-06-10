@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Prototypal inheritance</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+    function Hero (name) {
+        this.name = name;
+    }
+
+    Hero.prototype.saludar = function() {
+        console.log(`New: ${this.name}`);
+    }
+
+    const zelda = new Hero('zelda');
+    console.log(zelda.name);
+    console.log(zelda.saludar);
+    console.log(zelda.toString);
+    console.log(`Has own property name: ${zelda.hasOwnProperty('saludar')}`);
+    </script>
+</body>
+</html>
