@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Call, Apply & Bind</title>
+</head>
+<body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+   
+    <script>
+     //this con call
+     function saludar() {
+         console.log(`Hola, mi nombre es ${this.name} ${this.apellido}`);
+     };
+
+     const santiago = {
+         name:"Santiago",
+         apellido:"Pérez"
+     };
+
+     saludar.call(santiago);
+     //this con call y argumentos
+     function caminar(metros, distancia) {
+         console.log(`Hola ${this.name}, debes caminar ${metros} para ${distancia}`);
+     };
+
+     caminar.call(santiago, 4000, 'derecha');
+     
+     //Establece 'this' usando apply y pasar argumentos a la función
+     const valores = [6000, 'derecho']
+     
+     caminar.apply(santiago, valores);
+
+     /**
+      * Call = comma
+      * Apply = arrray
+      */
+
+    const daniel = {
+        name: 'Daniel',
+        apellido: 'Sanchez',
+    };
+
+    const danielSaluda = saludar.bind(daniel);
+
+    danielSaluda()
+
+    const danielCamina = caminar.bind(daniel, 200, 'sur');
+
+    danielCamina()
+    
+    </script>
+</body>
+</html>
