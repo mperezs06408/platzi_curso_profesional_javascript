@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Promesas</title>
+  </head>
+
+  <body>
+    <a href="/ejercicios/">Go back</a>
+
+    <script>
+        //las funciones generadoras llevan un asterisco al lado de la keyword function
+        function* simpleGenerator () {
+            console.log('Generator start');
+            yield 1;
+            yield 2;
+            yield 3;
+            console.log('Generator end');
+        }
+
+        const gen = simpleGenerator();
+
+        function* idMaker() {
+            let id = 1;
+            while (true) {
+                yield id;
+                id++;
+            }
+        }
+
+        const genId = idMaker();
+
+        function* idMakerWithReset() {
+            let id = 1;
+            while (true) {
+                reset = yield id;
+                if (reset) {
+                    id = 1;
+                } else {
+                    id++;
+                }
+            }
+        }
+
+        const genIdReset = idMakerWithReset();
+
+        function* fibonacci(){
+            let a = 1;
+            let b = 1;
+
+            while(true){
+                const nextNum = a + b;
+                a = b;
+                b = nextNum;
+                yield nextNum;
+            }
+        }
+
+        const fib = fibonacci();
+
+    </script>
+  </body>
+</html>
