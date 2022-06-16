@@ -1,46 +1,25 @@
-//Boolean
-/**
- * Al declarar variables en TS es posible declarar
- * explícitamente el tipo de variable que queremos
- * utilizar.
- */
-let muted: boolean = true;
+//funciones
+function add(a: number, b: number) : number {
+    return a + b;
+};
 
-muted = false;
-//muted = 'callao' //No se puede cambiar el tipo de dato que posee una variable
+const sum : number = add(10,40);
 
-//Números
-let age = 6;
-
-let numerador: number = 42;
-let denominador: number = age;
-
-let resultado = numerador / denominador;
-
-//String
-let nombre: string = 'Santiago';
-let saludo: string = `Me llamo ${nombre}`;
-
-//Arreglos
-let people: string[] = [];
-
-people = ['Isabell', 'Nicol', 'Raul'];
-
-//people.push('9000')
-
-let peopleAndNumbers: Array<string | number> = [];
-
-peopleAndNumbers.push('Ricardo');
-peopleAndNumbers.push(900);
-
-//enum
-enum Color {
-    Rojo = "red",
-    Verde = "green",
-    Azul = "blue",
+function createAdder(a: number): (number) => number {
+    return function (b: number) {
+        return b + a;
+    }
 }
 
 
-let colorFavorito: Color = Color.Rojo;
+const addFour = createAdder(4);
 
-console.log(`Mi color favorito es ${colorFavorito}`);
+const fourPlus6 = addFour(6);
+
+function fullName(firstName: string, lastName: string = 'Smith'): string {
+    return `${firstName} ${lastName}`;
+}
+
+const richard = fullName('Agente');
+
+console.log(richard);
