@@ -1,11 +1,11 @@
-function MediaPlayer(config) {
+class MediaPlayer {
+  constructor(config) {
     this.media = config.el;
     this.plugins = config.plugins || [];
 
     this._initPlugins();
   }
-
-  MediaPlayer.prototype._initPlugins = function() {
+  _initPlugins() {
     const player = {
       media: this.media,
       play: () => this.play(),
@@ -16,37 +16,38 @@ function MediaPlayer(config) {
       set muted(value) {
         this.media.muted = value;
       }
-
-    }
-    this.plugins.forEach( plugin => {
+    };
+    this.plugins.forEach(plugin => {
       plugin.run(player);
-    })
+    });
   }
-  
-  MediaPlayer.prototype.play = function () {
+  play() {
     this.media.play();
-  };
-  
-  MediaPlayer.prototype.pause = function () {
+  }
+  pause() {
     this.media.pause();
-  };
-  
-  MediaPlayer.prototype.togglePlay = function() {
+  }
+  togglePlay() {
     if (this.media.paused) {
       this.play();
     } else {
       this.pause();
     }
   }
-
-  MediaPlayer.prototype.mute = function() {
+  mute() {
     this.media.muted = true;
   }
-
-  MediaPlayer.prototype.unmute = function() {
+  unmute() {
     this.media.muted = false;
   }
+  toggleSound() { this.media.muted = !this.media.muted; }
+}
 
-  MediaPlayer.prototype.toggleSound = function() { this.media.muted = !this.media.muted }
+  
+  
+  
+
+
+
 
 export default MediaPlayer;
